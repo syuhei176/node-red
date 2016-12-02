@@ -15,6 +15,9 @@
  **/
 
 
+var app = require('electron').app;
+var app_path = app.getAppPath();
+
 var when = require("when");
 var path = require("path");
 var fs = require("fs");
@@ -25,7 +28,7 @@ var log = require("../../log");
 var events = require("../../events");
 
 var child_process = require('child_process');
-var npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+var npmCommand = process.platform === 'win32' ? (app_path + '/node_modules/npm/bin/npm.cmd') : (app_path + '/node_modules/npm/bin/npm');
 var paletteEditorEnabled = false;
 
 var settings;
